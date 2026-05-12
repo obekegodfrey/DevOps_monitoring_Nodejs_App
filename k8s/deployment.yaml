@@ -1,7 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  labels:
+    app: node-k8s-demo
   name: node-k8s-demo
+  namespace: dmalvia
 spec:
   replicas: 3
   selector:
@@ -10,12 +13,13 @@ spec:
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null 
-      labels: 
+      labels:
         app: node-k8s-demo
     spec:
       containers:
-        - name: node-k8s-demo
-          image: obekegodfreyvicent/node-k8s-demo:latest 
-          ports:
-            - containerPort: 3000
+      - image: obekegodfreyvicent/node-k8s-demo:latest
+        name: node-k8s-demo
+        ports:
+        - containerPort: 3000
+        resources: {}
+status: {}
